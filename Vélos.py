@@ -1,4 +1,7 @@
+# Import des bibliotèques 
 import requests
+import datetime
+
 
 # Clé API JCDecaux
 api_key = "e0a1bf2c844edb9084efc764c089dd748676cc14"
@@ -8,6 +11,11 @@ url = "https://api.jcdecaux.com/vls/v3/"
 
 # URL pour récupérer les informations sur les contrats
 url_ville = url + "contracts" + "?apiKey=" + api_key
+
+# Affichage de la date et l'heure du relevé de données
+date_actuelle = datetime.datetime.now().strftime('%Y-%m-%d')
+heure_actuelle = datetime.datetime.now().strftime('%H:%M')
+print("Statistiques du :", date_actuelle, "à", heure_actuelle)
 
 
 # Récupérer toutes les villes sous contrat
@@ -73,6 +81,7 @@ for ville in villes:
 
 
         # Affichage des résultats
+        print(" ")
         print(ville)
         print(f"Nombre total de stands : {total_stands}")
         print(f"Nombre total de vélos disponibles : {total_bikes}")
@@ -85,5 +94,3 @@ for ville in villes:
     
 # Appeler la fonction d'affichage du classement des villes
 afficher_classement_villes()
-    
-#https://api.jcdecaux.com/vls/v3/stations?contract={ville}&apiKey=e0a1bf2c844edb9084efc764c089dd748676cc14
